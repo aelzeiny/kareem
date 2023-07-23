@@ -20,6 +20,26 @@ const getImageUris = (arr: string[], path: string) => arr.map(n => `/assets/${pa
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: (
+      <div>
+        <h2>Memory</h2>
+        <ul>
+          <li><a href='/memory/numbers'>Numbers</a></li>
+          <li><a href='/memory/colors'>Colors</a></li>
+          <li><a href='/memory/family'>Family</a></li>
+        </ul>
+        <br />
+        <h2>Find</h2>
+        <ul>
+          <li><a href='/find/numbers'>Numbers</a></li>
+          <li><a href='/find/colors'>Colors</a></li>
+          <li><a href='/find/family'>Family</a></li>
+        </ul>
+      </div>
+    )
+  },
+  {
     path: "/memory/numbers",
     element: <Memory audioUris={getAudioUris(NUMS, 'numbers')} imageUris={getImageUris(NUMS, 'numbers')} />
   },
