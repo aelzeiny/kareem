@@ -12,7 +12,7 @@ export interface FindProps {
     imageUris: string[];
 }
 
-const YAY_URI = '/assets/yay!.mp3';
+const YAY_URI = `${window.location.pathname}assets/yay!.mp3`;
 
 export function Find(props: FindProps) {
     const [answerIdx, setAnswerIdx] = useState(Math.floor(Math.random() * 3));

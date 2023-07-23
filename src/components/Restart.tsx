@@ -7,7 +7,7 @@ export interface RestartProps {
     speak: boolean;
 }
 
-const YAY_URI = "/assets/yay!.mp3";
+const YAY_URI = `${window.location.pathname}assets/yay!.mp3`;
 
 export function Restart({ onClick, speak }: RestartProps) {
     const yay = useMemo(() => new Audio(YAY_URI), []);
