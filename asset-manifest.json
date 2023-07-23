@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/kareem/static/css/main.6c230839.css",
+    "main.js": "/kareem/static/js/main.e8f31176.js",
+    "static/media/card-back.png": "/kareem/static/media/card-back.2803a6df57476a470d8d.png",
+    "static/media/card-back-wrong.png": "/kareem/static/media/card-back-wrong.ab968d079df7ab5e7b5a.png",
+    "index.html": "/kareem/index.html",
+    "main.6c230839.css.map": "/kareem/static/css/main.6c230839.css.map",
+    "main.e8f31176.js.map": "/kareem/static/js/main.e8f31176.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c230839.css",
+    "static/js/main.e8f31176.js"
+  ]
+}
