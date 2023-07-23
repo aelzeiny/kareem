@@ -70,6 +70,7 @@ export function Find(props: FindProps) {
         if (!ready) return;
 
         const questionAudio = questionAudios[vals[answerIdx]];
+        questionAudio.currentTime = 0;
         questionAudio.play();
     }, [vals, ready, answerIdx, questionAudios]);
 
