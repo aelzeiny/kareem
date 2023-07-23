@@ -3,7 +3,8 @@ import { Find } from './components/Find';
 import { Memory } from './components/Memory';
 
 import {
-  createBrowserRouter,
+  createHashRouter,
+  Link,
   RouterProvider,
 } from "react-router-dom";
 
@@ -11,33 +12,33 @@ const NUMS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'ei
 const COLORS = ['red', 'yellow', 'orange', 'blue', 'green', 'purple'];
 const FAMILY = ['amo', 'baba', 'deedee', 'giddo', 'leena', 'mama', 'nana', 'susu', 'tita'];
 
-const getBadUri = (path: string, n: string) => `/assets/${path}/audio/${n}.mp3`;
-const getGoodUri = (path: string, n: string) => `/assets/${path}/audio/${n}!.mp3`;
-const getQuestionUri = (path: string, n: string) => `/assets/${path}/audio/fin ${n}.mp3`;
+const getBadUri = (path: string, n: string) => `${window.location.pathname}assets/${path}/audio/${n}.mp3`;
+const getGoodUri = (path: string, n: string) => `${window.location.pathname}assets/${path}/audio/${n}!.mp3`;
+const getQuestionUri = (path: string, n: string) => `${window.location.pathname}assets/${path}/audio/fin ${n}.mp3`;
+const getImageUris = (arr: string[], path: string) => arr.map(n => `${window.location.pathname}assets/${path}/images/${n}.png`);
 const getAudioUris = (arr: string[], path: string) => arr.map(n => ({ goodUri: getGoodUri(path, n), badUri: getBadUri(path, n) }));
-const getImageUris = (arr: string[], path: string) => arr.map(n => `/assets/${path}/images/${n}.png`);
 
 function TableOfContents(prefix: string) {
   return (
     <div>
       <h2>Memory</h2>
       <ul>
-        <li><a href={`${prefix}/memory/numbers`}>Numbers</a></li>
-        <li><a href={`${prefix}/memory/colors`}>Colors</a></li>
-        <li><a href={`${prefix}/memory/family`}>Family</a></li>
+        <li><Link to={`${prefix}/memory/numbers`}>Numbers</Link></li>
+        <li><Link to={`${prefix}/memory/colors`}>Colors</Link></li>
+        <li><Link to={`${prefix}/memory/family`}>Family</Link></li>
       </ul>
       <br />
       <h2>Find</h2>
       <ul>
-        <li><a href={`${prefix}/find/numbers`}>Numbers</a></li>
-        <li><a href={`${prefix}/find/colors`}>Colors</a></li>
-        <li><a href={`${prefix}/find/family`}>Family</a></li>
+        <li><Link to={`${prefix}/find/numbers`}>Numbers</Link></li>
+        <li><Link to={`${prefix}/find/colors`}>Colors</Link></li>
+        <li><Link to={`${prefix}/find/family`}>Family</Link></li>
       </ul>
     </div>
   );
 }
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: TableOfContents(''),
