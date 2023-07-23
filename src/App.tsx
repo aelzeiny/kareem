@@ -90,10 +90,19 @@ const router = createHashRouter([
 ]);
 
 function App() {
+  document.addEventListener('gesturestart', function (e) {
+    e.preventDefault();
+  });
   useEffect(() => {
     const preventDefault = (event: MouseEvent) => event.preventDefault();
     document.addEventListener('contextmenu', preventDefault);
-    return () => document.removeEventListener('contextmenu', preventDefault);
+    // @ts-ignore
+    document.addEventListener('gesturestart', preventDefault);
+    return () => {
+      document.removeEventListener('contextmenu', preventDefault);
+      // @ts-ignore
+      document.removeEventListener('gesturestart', preventDefault);
+    };
   });
   return (
     <div className="App">
