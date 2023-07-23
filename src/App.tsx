@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css';
 import { Find } from './components/Find';
 import { Memory } from './components/Memory';
@@ -89,6 +90,11 @@ const router = createHashRouter([
 ]);
 
 function App() {
+  useEffect(() => {
+    const preventDefault = (event: MouseEvent) => event.preventDefault();
+    document.addEventListener('contextmenu', preventDefault);
+    return () => document.removeEventListener('contextmenu', preventDefault);
+  });
   return (
     <div className="App">
       <RouterProvider router={router} />
