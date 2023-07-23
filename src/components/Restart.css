@@ -1,0 +1,15 @@
+.restart-modal {
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 8px 0px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 3px 3px -2px;
+}
+
+.restart-button {
+    background-color: #f7fff7;
+    border: none;
+    cursor: pointer;
+}

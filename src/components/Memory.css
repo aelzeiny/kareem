@@ -1,0 +1,18 @@
+/* Define the container for the grid */
+.memory-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 equal columns */
+    grid-template-rows: repeat(4, 1fr);
+    /* 4 equal rows */
+    gap: 8px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Define the style for each grid item (optional) */
+.memory-grid-item {
+    text-align: center;
+    font-size: 18px;
+    height: 25vh;
+}
