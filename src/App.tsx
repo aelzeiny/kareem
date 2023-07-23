@@ -17,31 +17,34 @@ const getQuestionUri = (path: string, n: string) => `/assets/${path}/audio/fin $
 const getAudioUris = (arr: string[], path: string) => arr.map(n => ({ goodUri: getGoodUri(path, n), badUri: getBadUri(path, n) }));
 const getImageUris = (arr: string[], path: string) => arr.map(n => `/assets/${path}/images/${n}.png`);
 
+function TableOfContents(prefix: string) {
+  return (
+    <div>
+      <h2>Memory</h2>
+      <ul>
+        <li><a href={`${prefix}/memory/numbers`}>Numbers</a></li>
+        <li><a href={`${prefix}/memory/colors`}>Colors</a></li>
+        <li><a href={`${prefix}/memory/family`}>Family</a></li>
+      </ul>
+      <br />
+      <h2>Find</h2>
+      <ul>
+        <li><a href={`${prefix}/find/numbers`}>Numbers</a></li>
+        <li><a href={`${prefix}/find/colors`}>Colors</a></li>
+        <li><a href={`${prefix}/find/family`}>Family</a></li>
+      </ul>
+    </div>
+  );
+}
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <h2>Memory</h2>
-        <ul>
-          <li><a href='/memory/numbers'>Numbers</a></li>
-          <li><a href='/memory/colors'>Colors</a></li>
-          <li><a href='/memory/family'>Family</a></li>
-        </ul>
-        <br />
-        <h2>Find</h2>
-        <ul>
-          <li><a href='/find/numbers'>Numbers</a></li>
-          <li><a href='/find/colors'>Colors</a></li>
-          <li><a href='/find/family'>Family</a></li>
-        </ul>
-      </div>
-    )
+    element: TableOfContents(''),
   },
   {
     path: "/kareem",
-    element: <h1>KAREEM</h1>
+    element: TableOfContents('/kareem')
   },
   {
     path: "/memory/numbers",
