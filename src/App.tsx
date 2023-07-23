@@ -40,6 +40,10 @@ const router = createBrowserRouter([
     )
   },
   {
+    path: "/kareem",
+    element: <h1>KAREEM</h1>
+  },
+  {
     path: "/memory/numbers",
     element: <Memory audioUris={getAudioUris(NUMS, 'numbers')} imageUris={getImageUris(NUMS, 'numbers')} />
   },
