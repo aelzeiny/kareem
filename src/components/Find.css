@@ -1,8 +1,8 @@
-.grid-container {
+.find-grid-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 8px;
+    gap: 0px;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -12,4 +12,26 @@
     text-align: center;
     font-size: 18px;
     height: 33vh;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    transition: all 300ms ease-in-out;
+}
+
+.find-grid-item[data-order="0"] {
+    top: 0;
+}
+
+.find-grid-item[data-order="1"] {
+    top: 33vh;
+}
+
+.find-grid-item[data-order="2"] {
+    top: 66vh;
+}
+
+.find-grid-item.answer {
+    top: 0 !important;
+    height: 100vh;
+    z-index: 1;
 }

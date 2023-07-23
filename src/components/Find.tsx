@@ -91,7 +91,7 @@ export function Find(props: FindProps) {
     const onClick = (i: number) => {
         if (!flipped[i] || isFinished) return;
         if (i === answerIdx) {
-            setFlipped([...flipped.slice(0, i).map(() => false), true, ...flipped.slice(i + 1).map(() => false)]);
+            setFlipped(flipped.map(_ => true));
             congratsRoutine();
         } else {
             setFlipped([...flipped.slice(0, i), false, ...flipped.slice(i + 1)]);
@@ -106,15 +106,17 @@ export function Find(props: FindProps) {
     return (
         <div className="find-grid-container">
             {vals.map((v, i) => (
-                <div className="find-grid-item" key={v}>
+                <div className={`find-grid-item ${isFinished && answerIdx === i ? 'answer' : ''}`} key={v} data-order={i}>
                     <Card
                         value={v}
                         isFlipped={flipped[i]}
                         imageUri={props.imageUris[v]}
                         onClick={() => onClick(i)}
-                        cardBack={CardBack} />
+                        cardBack={CardBack}
+                        cardBackgroundColor={"#000"} />
                 </div>
-            ))}
-        </div>
+            ))
+            }
+        </div >
     );
 }

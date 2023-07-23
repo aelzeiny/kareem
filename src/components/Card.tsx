@@ -10,10 +10,11 @@ export interface CardProps {
     isFlipped: boolean;
     onClick: () => void;
     cardBack?: string;
+    cardBackgroundColor?: string;
 }
 
 
-export function Card({ value, isFlipped, onClick, imageUri, cardBack }: CardProps) {
+export function Card({ value, isFlipped, onClick, imageUri, cardBack, cardBackgroundColor }: CardProps) {
     const [color, setColor] = useState<string | null>(null);
 
     const imgRef = useRef<HTMLImageElement | null>(null);
@@ -25,15 +26,16 @@ export function Card({ value, isFlipped, onClick, imageUri, cardBack }: CardProp
             .then(c => setColor(c.hex));
     }, [imgRef, setColor]);
 
-    const style = color ? { backgroundColor: color } : {};
+    const flippedStyle = color ? { backgroundColor: color } : {};
+    const unflippedStyle = cardBackgroundColor ? { backgroundColor: cardBackgroundColor } : {};
 
     return (
         <figure className={`flip-card ${isFlipped ? "flip-card-active" : ""}`} onClick={onClick}>
             <div className="flip-card-inner">
-                <div className="flip-card-front">
+                <div className="flip-card-front" style={unflippedStyle}>
                     <img className="flip-card-img" src={cardBack || defaultCardBack} alt="Card" />
                 </div>
-                <div className="flip-card-back" style={style}>
+                <div className="flip-card-back" style={flippedStyle}>
                     <img ref={imgRef} className="flip-card-img" src={imageUri} alt={value.toString()} />
                 </div>
             </div>
