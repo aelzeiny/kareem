@@ -24,7 +24,7 @@ export function Card({ value, isFlipped, onClick, imageUri, cardBack, cardBackgr
         const fac = new FastAverageColor();
         fac.getColorAsync(imgRef.current)
             .then(c => setColor(c.hex));
-    }, [imgRef, setColor]);
+    }, [imageUri, imgRef, setColor]);
 
     const flippedStyle = color ? { backgroundColor: color } : {};
     const unflippedStyle = cardBackgroundColor ? { backgroundColor: cardBackgroundColor } : {};
