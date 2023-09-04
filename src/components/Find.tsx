@@ -36,22 +36,19 @@ export function Find(props: FindProps) {
             }
             yay.pause();
             // play
-            const listener = () => {
-                audio.removeEventListener("ended", listener);
-                resolve(null);
-            };
-            audio.addEventListener("ended", listener);
-
-            const isPlaying = (
-                audio.currentTime > 0 && !audio.paused && !audio.ended
-                && audio.readyState > audio.HAVE_CURRENT_DATA
-            );
-            if (!isPlaying) {
-                audio.currentTime = 0;
+            audio.currentTime = 0;
+            const playListener = () => {
                 console.log(audio);
                 audio.play();
-            }
-        })
+            };
+            const stopListener = () => {
+                audio.removeEventListener("ended", stopListener);
+                audio.removeEventListener("canplay", playListener);
+                resolve(null);
+            };
+            audio.addEventListener("ended", stopListener);
+            audio.addEventListener("canplay", playListener);
+        });
     };
 
     const vals = useMemo(() => {
@@ -70,8 +67,7 @@ export function Find(props: FindProps) {
         if (!ready) return;
 
         const questionAudio = questionAudios[vals[answerIdx]];
-        questionAudio.currentTime = 0;
-        questionAudio.play();
+        playAudio(questionAudio);
     }, [vals, ready, answerIdx, questionAudios]);
 
     const congratsRoutine = () => {
